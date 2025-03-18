@@ -5,14 +5,16 @@ import './App.css'
 
 import Counter from './components/Counter';
 import Photo from './components/Photo'
+import Album from './components/album';
 
 function App() {
   const [count, setCount] = useState(0);
   const [photos, setPhotos] = useState([]);
+  const [albumId, setAlbumId] = useState(1);
 
-  const fetchAlbum = async () => {
+  const fetchPhotos = async (albumId) => {
     try {
-        const url = 'https://jsonplaceholder.typicode.com/albums/1/photos'
+        const url = `https://jsonplaceholder.typicode.com/albums/${albumId}/photos`
         const response = await fetch(url); //Por padrão executa um request do tipo GET
         if (response.status == 200) {
           const data = await response.json();
@@ -30,8 +32,8 @@ function App() {
   }
 
   useEffect(() => {
-    fetchAlbum();
-  }, [])
+    fetchPhotos(albumId);
+  }, [albumId]);
 
   // function updateCount() {
   //   setCount(count+1);
@@ -64,7 +66,7 @@ function App() {
     <>
       <Counter title="Contando..." />
       <Counter initial="100" />
-      <article>
+      {/* <article>
         <h1>Album da API</h1>
         {photos.map ( (photo) => (
           // <article key={photo.id}>
@@ -74,7 +76,16 @@ function App() {
           // </article>
           <Photo photo={photo} />
         ) )}
-      </article>
+      </article> */}
+      <div>
+        <button onClick={() => setAlbumId(1)}>Album #1</button>
+        <button onClick={() => setAlbumId(2)}>Album #2</button>
+        <button onClick={() => setAlbumId(3)}>Album #3</button>
+        <button onClick={() => setAlbumId(4)}>Album #4</button>
+       </div>
+
+      <Album albumId={albumId}/>
+
     </>
   )
 }
