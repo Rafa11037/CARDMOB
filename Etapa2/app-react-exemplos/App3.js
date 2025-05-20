@@ -1,13 +1,14 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Button, Image, TextInput, FlatList } from 'react-native';
 
-import ScrollViewExample from './components/ScrollViewExample';
+import List from './components/List';
 
 export default function App() {
  
   return (
     <View style={styles.container}>
-      <ScrollViewExample/>
+      <List/>
     </View>
   );
 
