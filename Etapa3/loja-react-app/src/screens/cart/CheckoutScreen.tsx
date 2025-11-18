@@ -35,7 +35,8 @@ const CheckoutScreen = ( {navigation}: any) => {
         clearCart();
         console.log(customerInfo);
         // navigation.navigate('Catalog');
-        navigation.replace('Tabs', {screen: 'Catalog'});
+        // navigation.replace('Tabs', {screen: 'Catalog'});
+        navigation.navigate('OrderInfo');
     }
 
     return (
